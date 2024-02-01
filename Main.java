@@ -8,14 +8,12 @@ public class Main {
         DynamicArray myArr = new DynamicArray();
         myArr.add(harry);
         myArr.add(ron);
-        myArr.add(hermione);
         myArr.add(draco);
-
-        // myArr.remove();
-        // myArr.remove(4);
+        myArr.add(hermione);
+        myArr.remove();
+        myArr.remove(1);
+        myArr.set(0,snape);
         // myArr.clear();
-        // myArr.get(0);
-        // myArr.set(3,snape);
         for (int i = 0; i<myArr.size(); i++) {
             System.out.println(myArr.get(i));
         }

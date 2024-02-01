@@ -23,8 +23,15 @@ public class DynamicArray {
     }
 
     public void remove() {
-        list[size-1] = null;
-        --size;
+        if(size>0) {
+            list[size-1] = null;
+            --size;
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
+        if(canShrink()) {
+            shrink();
+        }
     }
 
     public void remove(int index) {
@@ -65,5 +72,20 @@ public class DynamicArray {
             extendedList[i] = list[i];
         }
         list = extendedList;
+    }
+
+    private boolean canShrink() {
+        // Kun hvis arrayets .length er større end size
+        // Og kun hvis forskellen er større end growsize
+        // Og kun hvis .length minus growsize stadig er større end (eller lig med) INITIAL_SIZE
+        return list.length-size > growSize && list.length-growSize >= INITIAL_SIZE;
+    }
+
+    private void shrink() {
+        Person[] shortendList = new Person[list.length-growSize];
+        for (int i=0; i<size;i++) {
+            shortendList[i] = list[i];
+        }
+        list = shortendList;
     }
 }

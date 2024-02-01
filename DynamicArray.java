@@ -32,26 +32,6 @@ public class DynamicArray {
         } else {
             throw new IndexOutOfBoundsException();
         }
-
-        // for (int i = 0; i<size; i++) {
-        //     if(i>index) {
-        //         list[i-1] = list[i]; 
-        //     }
-        // }
-        // list[size-1] = null;
-        // --size;
-
-        //         if (index < size) {
-        //     for (int i = index; i<size; i++) {
-        //         if(i>index) {
-        //             list[i-1] = list[i]; 
-        //         }
-        //     }
-        //     list[size-1] = null;
-        //     --size;
-        // } else {
-        //     throw new IndexOutOfBoundsException();
-        // }
     }
 
     public void clear() {

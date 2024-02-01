@@ -15,7 +15,7 @@ public class Main {
         // myArr.remove(4);
         // myArr.clear();
         // myArr.get(0);
-        myArr.set(4,snape);
+        // myArr.set(3,snape);
         for (int i = 0; i<myArr.size(); i++) {
             System.out.println(myArr.get(i));
         }

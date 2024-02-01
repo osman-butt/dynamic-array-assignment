@@ -2,7 +2,8 @@ public class DynamicArray {
     
     private final int INITIAL_SIZE = 10;
     private Person[] list;
-    public int size;
+    private int size;
+    private int growSize = 10;
 
     public DynamicArray() {
         list = new Person[INITIAL_SIZE];
@@ -10,6 +11,9 @@ public class DynamicArray {
     }
 
     public void add(Person newPerson) {
+        if(size+1 > list.length) {
+            grow();
+        }
         list[size] = newPerson;
         ++size;
     }
@@ -48,21 +52,18 @@ public class DynamicArray {
     }
 
     public void set(int index, Person newPerson) {
-        list[index] = newPerson;
-
-        // JavaScript behaviour:
-        // Make everything between i = size-1 up until i = index-1 null
-        // if(index>=size) {
-        //     for (int i = size; i<index; i++) {
-        //         list[i] = new Person(null);
-        //     }
-        //     size = index+1;
-        // }
-
-        if(index > size) {
-            throw new IndexOutOfBoundsException();
+        if(index>=0 && index < size) {
+            list[index] = newPerson;
         } else {
-            ++size;
+            throw new IndexOutOfBoundsException();
         }
+    }
+
+    private void grow() {
+        Person[] extendedList = new Person[list.length+growSize];
+        for (int i=0; i<size;i++) {
+            extendedList[i] = list[i];
+        }
+        list = extendedList;
     }
 }
